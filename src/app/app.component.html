@@ -1,0 +1,28 @@
+
+<input type="text" [(ngModel)]="fname" name="fname" placeholder="First Name">
+<input type="text" [(ngModel)]="lname" name="lname" placeholder="Last Name">
+<input type="text" [(ngModel)]="mobile" name="mobile" placeholder="Mobile No.">
+<input type="text" [(ngModel)]="phone" name="phone" placeholder="Phone No.">
+<input type="text" [(ngModel)]="email" name="email" placeholder="Email">
+<input type="text" [(ngModel)]="address" name="address" placeholder="Address">
+<input type="submit" value="Submit" (click)="addPost()">
+
+<ul *ngFor="let Contactlist of contact | async">
+  <li (click)="getPost(Contactlist.id)">
+       First Name: {{Contactlist.data.fname}} (<a href="#" (click)="deletePost(Contactlist.id)">delete</a>) <br>
+       Last Name: {{Contactlist.data.lname}} <br>
+       Mobile: {{Contactlist.data.mobile}} <br>
+       Phone: {{Contactlist.data.phone}} <br>
+       Email:  {{Contactlist.data.email}} <br>
+       Address: {{Contactlist.data.address}} <br>
+  </li>
+</ul>
+
+<h1>A specific post:</h1>
+
+<h3>{{ (singleContactlist | async)?.fname }}</h3>
+<h3>{{ (singleContactlist | async)?.lname }}</h3>
+<h3>{{ (singleContactlist | async)?.mobile }}</h3>
+<h3>{{ (singleContactlist | async)?.phone }}</h3>
+<h3>{{ (singleContactlist | async)?.email }}</h3>
+<h3>{{ (singleContactlist | async)?.address }}</h3>
